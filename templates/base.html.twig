@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="h-100">
     <head>
         <meta charset="UTF-8">
         {% if title is defined %}
@@ -14,8 +14,8 @@
             {% block importmap %}{{ importmap('app') }}{% endblock %}
         {% endblock %}
     </head>
-    <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-1">
+    <body class="h-100">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-1" style="border-bottom:5px solid #000;">
             <a class="navbar-brand" href="/">Wypok</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>

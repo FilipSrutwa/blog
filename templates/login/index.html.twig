@@ -1,20 +1,33 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello LoginController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+<div class="container">
+    <div class="row d-flex justify-content-center align-items-center h-100 mt-2">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+          <div class="card" style="border-radius: 15px;">
+            <div class="card-body p-5">
+              <h2 class="text-uppercase text-center mb-5">Zaloguj się</h2>
+              
+              <form>
+                <div class="form-outline mb-4">
+                  <input type="text" id="inputLogin" class="form-control form-control-lg" />
+                  <label class="form-label" for="inputLogin">Nazwa użytkownika/E-mail</label>
+                </div>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/xampp/htdocs/blog/src/Controller/LoginController.php</code></li>
-        <li>Your template at <code>C:/xampp/htdocs/blog/templates/login/index.html.twig</code></li>
-    </ul>
+                <div class="form-outline mb-4">
+                  <input type="password" id="inputPassword" class="form-control form-control-lg" />
+                  <label class="form-label" for="inputPassword">Hasło</label>
+                </div>
+                <div class="d-flex justify-content-center">
+                  <button class="btn btn-lg btn-success">Zaloguj się</button>
+                </div>
+                <a href="#">Zapomniałem hasła</a>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 </div>
 {% endblock %}

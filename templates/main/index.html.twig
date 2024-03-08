@@ -1,7 +1,139 @@
-{% extends 'base.html.twig' %}
+{% extends 'base.html.twig' %} 
 
 {% block body %}
-<div class="container-fluid">
-    <h1 class="text-primary">Hejo</h1>
+<div class="container-fluid bg-dark">
+
+    <div class="row p-1 pt-3">
+        <div class="col-2 bg-secondary rounded-2 text-white">
+            <h2 class="text-center">Nowości</h2>
+        </div>
+
+        <div class="col-1"></div> <!--Empty spacing!-->
+
+        <div class="col-6 ">
+            <div class="p-3 bg-secondary text-white rounded-2">
+                <h5>Dodaj post</h1>
+                <form action="#">
+                 <div class="form-group d-flex flex-column">
+                    <textarea class="form-control" id="newPostText" rows="3" placeholder="Dodaj tekst..."></textarea>
+                    <hr>
+                    <button class="btn btn-lg btn-dark align-self-end">Dodaj</button>
+                </div>
+                </form>
+            </div>
+            <hr>
+            <div class="bg-secondary text-white rounded-2 p-2 d-flex flex-column"> <!--beggining of the post!-->
+                <div class="d-flex flex-column"> <!--header of the post!-->
+                    <div class="d-flex flex-row">
+                        <img src="" alt="" style="width:50px; height:50px;">
+                        <div class="d-flex flex-column ms-1">
+                            <p class="m-0 p-0 text-warning">Username</p>
+                            <p class="m-0 p-0 text-dark">19:07</p>
+                        </div>
+                        <div class="ms-auto">
+                            <div class="d-flex flex-row">
+                                <h5 class="text-success me-2"><b>127</b></h5>
+                                <button class="btn btn-sm btn-success text-dark">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis inventore dolorum atque corporis pariatur harum quisquam cupiditate impedit.
+                    Fuga quia, hic accusamus autem ducimus temporibus impedit quae sed earum debitis!</p>
+                </div>
+                <hr>
+                <div class="d-flex flex-column ms-4"> <!--header of the post!-->
+                    <div class="d-flex flex-row">
+                        <img src="" alt="" style="width:50px; height:50px;">
+                        <div class="d-flex flex-column ms-1">
+                            <p class="m-0 p-0 text-warning">Username</p>
+                            <p class="m-0 p-0 text-dark">19:07</p>
+                        </div>
+                        <div class="ms-auto">
+                            <div class="d-flex flex-row">
+                                <h5 class="text-success me-2"><b>127</b></h5>
+                                <button class="btn btn-sm btn-success text-dark">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis inventore dolorum atque corporis pariatur harum quisquam cupiditate impedit.
+                    Fuga quia, hic accusamus autem ducimus temporibus impedit quae sed earum debitis!</p>
+                </div><hr>
+                <div class="d-flex flex-column ms-4"> <!--header of the post!-->
+                    <div class="d-flex flex-row">
+                        <img src="" alt="" style="width:50px; height:50px;">
+                        <div class="d-flex flex-column ms-1">
+                            <p class="m-0 p-0 text-warning">Username</p>
+                            <p class="m-0 p-0 text-dark">19:07</p>
+                        </div>
+                        <div class="ms-auto">
+                            <div class="d-flex flex-row">
+                                <h5 class="text-success me-2"><b>127</b></h5>
+                                <button class="btn btn-sm btn-success text-dark">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis inventore dolorum atque corporis pariatur harum quisquam cupiditate impedit.
+                    Fuga quia, hic accusamus autem ducimus temporibus impedit quae sed earum debitis!</p>
+                </div>
+                <a href="#" class="btn btn-outline-light align-self-center">Zobacz cały wątek</a>
+            </div>
+
+            <div class="bg-secondary text-white rounded-2 p-2 d-flex flex-column mt-3"> <!--beggining of the post!-->
+                <div class="d-flex flex-column"> <!--header of the post!-->
+                    <div class="d-flex flex-row">
+                        <img src="" alt="" style="width:50px; height:50px;">
+                        <div class="d-flex flex-column ms-1">
+                            <p class="m-0 p-0 text-warning">Username</p>
+                            <p class="m-0 p-0 text-dark">19:07</p>
+                        </div>
+                        <div class="ms-auto">
+                            <div class="d-flex flex-row">
+                                <h5 class="text-success me-2"><b>127</b></h5>
+                                <button class="btn btn-sm btn-success text-dark">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis inventore dolorum atque corporis pariatur harum quisquam cupiditate impedit.
+                    Fuga quia, hic accusamus autem ducimus temporibus impedit quae sed earum debitis!</p>
+                </div>
+                <hr>
+                <div class="d-flex flex-column ms-4"> <!--header of the post!-->
+                    <div class="d-flex flex-row">
+                        <img src="" alt="" style="width:50px; height:50px;">
+                        <div class="d-flex flex-column ms-1">
+                            <p class="m-0 p-0 text-warning">Username</p>
+                            <p class="m-0 p-0 text-dark">19:07</p>
+                        </div>
+                        <div class="ms-auto">
+                            <div class="d-flex flex-row">
+                                <h5 class="text-success me-2"><b>127</b></h5>
+                                <button class="btn btn-sm btn-success text-dark">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis inventore dolorum atque corporis pariatur harum quisquam cupiditate impedit.
+                    Fuga quia, hic accusamus autem ducimus temporibus impedit quae sed earum debitis!</p>
+                </div><hr>
+                <div class="d-flex flex-column ms-4"> <!--header of the post!-->
+                    <div class="d-flex flex-row">
+                        <img src="" alt="" style="width:50px; height:50px;">
+                        <div class="d-flex flex-column ms-1">
+                            <p class="m-0 p-0 text-warning">Username</p>
+                            <p class="m-0 p-0 text-dark">19:07</p>
+                        </div>
+                        <div class="ms-auto">
+                            <div class="d-flex flex-row">
+                                <h5 class="text-success me-2"><b>127</b></h5>
+                                <button class="btn btn-sm btn-success text-dark">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis inventore dolorum atque corporis pariatur harum quisquam cupiditate impedit.
+                    Fuga quia, hic accusamus autem ducimus temporibus impedit quae sed earum debitis!</p>
+                </div>
+                <a href="#" class="btn btn-outline-light align-self-center">Zobacz cały wątek</a>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}
