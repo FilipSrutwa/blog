@@ -35,7 +35,8 @@
                         <a href="/register" class="nav-link">Zarejestruj się</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/login" class="nav-link">Zaloguj się</a>
+
+                        <a href="{{ app.user ?  "/logout" : "/login" }}" class="nav-link">{{ app.user ? "Wyloguj się" : "Zaloguj się" }}</a>
                     </li>
                 </ul>
             </div>

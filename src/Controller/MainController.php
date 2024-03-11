@@ -14,4 +14,11 @@ class MainController extends AbstractController
         $data = ['title' => 'Wypok - main'];
         return $this->render('main/index.html.twig', $data);
     }
+
+    #[Route('/post/{postNumber}', name: 'app_main_post', methods: ['GET', 'HEAD'])]
+    public function singlePost(): Response
+    {
+        $data = ['title' => 'Wypok - main'];
+        return $this->render('main/singlePost.html.twig', $data);
+    }
 }
