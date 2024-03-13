@@ -13,18 +13,15 @@
         <div class="col-6 ">
             <div class="p-3 bg-secondary text-white rounded-2">
                 <h5>Dodaj post</h1>
-                <form action="#">
-                 <div class="form-group d-flex flex-column">
-                    <textarea class="form-control" id="newPostText" rows="3" placeholder="Dodaj tekst..."></textarea>
-                    <hr>
+                {{ form_start(form) }}
+                {{ form_widget(form) }}
                     <button class="btn btn-lg btn-dark align-self-end">Dodaj</button>
-                </div>
-                </form>
+                {{ form_end(form) }}
             </div>
             <hr>
 
             {% for post in posts %}
-            <div class="bg-secondary text-white rounded-2 p-2 d-flex flex-column"> <!--beggining of the post!-->
+            <div class="bg-secondary text-white rounded-2 p-2 d-flex flex-column my-1"> <!--beggining of the post!-->
                 <div class="d-flex flex-column"> <!--header of the post!-->
                     <div class="d-flex flex-row">
                         <img src="" alt="" style="width:50px; height:50px;">
@@ -79,62 +76,6 @@
                 <a href="/post/{{post.id}}" class="btn btn-outline-light align-self-center">Zobacz cały wątek</a>
             </div>
             {% endfor %}
-
-            <div class="bg-secondary text-white rounded-2 p-2 d-flex flex-column mt-3"> <!--beggining of the post!-->
-                <div class="d-flex flex-column"> <!--header of the post!-->
-                    <div class="d-flex flex-row">
-                        <img src="" alt="" style="width:50px; height:50px;">
-                        <div class="d-flex flex-column ms-1">
-                            <p class="m-0 p-0 text-warning">Username</p>
-                            <p class="m-0 p-0 text-dark">19:07</p>
-                        </div>
-                        <div class="ms-auto">
-                            <div class="d-flex flex-row">
-                                <h5 class="text-success me-2"><b>127</b></h5>
-                                <button class="btn btn-sm btn-success text-dark">+</button>
-                            </div>
-                        </div>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis inventore dolorum atque corporis pariatur harum quisquam cupiditate impedit.
-                    Fuga quia, hic accusamus autem ducimus temporibus impedit quae sed earum debitis!</p>
-                </div>
-                <hr>
-                <div class="d-flex flex-column ms-4"> <!--header of the post!-->
-                    <div class="d-flex flex-row">
-                        <img src="" alt="" style="width:50px; height:50px;">
-                        <div class="d-flex flex-column ms-1">
-                            <p class="m-0 p-0 text-warning">Username</p>
-                            <p class="m-0 p-0 text-dark">19:07</p>
-                        </div>
-                        <div class="ms-auto">
-                            <div class="d-flex flex-row">
-                                <h5 class="text-success me-2"><b>127</b></h5>
-                                <button class="btn btn-sm btn-success text-dark">+</button>
-                            </div>
-                        </div>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis inventore dolorum atque corporis pariatur harum quisquam cupiditate impedit.
-                    Fuga quia, hic accusamus autem ducimus temporibus impedit quae sed earum debitis!</p>
-                </div><hr>
-                <div class="d-flex flex-column ms-4"> <!--header of the post!-->
-                    <div class="d-flex flex-row">
-                        <img src="" alt="" style="width:50px; height:50px;">
-                        <div class="d-flex flex-column ms-1">
-                            <p class="m-0 p-0 text-warning">Username</p>
-                            <p class="m-0 p-0 text-dark">19:07</p>
-                        </div>
-                        <div class="ms-auto">
-                            <div class="d-flex flex-row">
-                                <h5 class="text-success me-2"><b>127</b></h5>
-                                <button class="btn btn-sm btn-success text-dark">+</button>
-                            </div>
-                        </div>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis inventore dolorum atque corporis pariatur harum quisquam cupiditate impedit.
-                    Fuga quia, hic accusamus autem ducimus temporibus impedit quae sed earum debitis!</p>
-                </div>
-                <a href="#" class="btn btn-outline-light align-self-center">Zobacz cały wątek</a>
-            </div>
         </div>
     </div>
 </div>
