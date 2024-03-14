@@ -18,83 +18,56 @@ input::placeholder{
         <div class="col-1"></div> <!--Empty spacing!-->
 
         <div class="col-6 ">
-            <div class="p-3 bg-secondary text-white rounded-2">
-                <h5>Dodaj post</h1>
-                <form action="#">
-                 <div class="form-group d-flex flex-column">
-                    <textarea class="form-control" id="newPostText" rows="3" placeholder="Dodaj tekst..."></textarea>
-                    <hr>
-                    <button class="btn btn-lg btn-dark align-self-end">Dodaj</button>
-                </div>
-                </form>
-            </div>
-            <hr>
+        
             <div class="bg-secondary text-white rounded-2 p-2 d-flex flex-column"> <!--beggining of the post!-->
                 <div class="d-flex flex-column"> <!--header of the post!-->
                     <div class="d-flex flex-row">
                         <img src="" alt="" style="width:50px; height:50px;">
                         <div class="d-flex flex-column ms-1">
-                            <p class="m-0 p-0 text-warning">Username</p>
-                            <p class="m-0 p-0 text-dark">19:07</p>
+                            <p class="m-0 p-0 text-warning">{{ post.user.username }}</p>
+                            <p class="m-0 p-0 text-dark">{{ post.createdAt|date("Y-m-d h:i") }}</p>
                         </div>
                         <div class="ms-auto">
                             <div class="d-flex flex-row">
-                                <h5 class="text-success me-2"><b>127</b></h5>
+                                <h5 class="text-success me-2"><b>{{ post.score }}</b></h5>
                                 <button class="btn btn-sm btn-success text-dark">+</button>
                             </div>
                         </div>
                     </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis inventore dolorum atque corporis pariatur harum quisquam cupiditate impedit.
-                    Fuga quia, hic accusamus autem ducimus temporibus impedit quae sed earum debitis!</p>
-                </div>
-                <hr>
-                <div class="d-flex flex-column ms-4"> <!--header of the post!-->
-                    <div class="d-flex flex-row">
-                        <img src="" alt="" style="width:50px; height:50px;">
-                        <div class="d-flex flex-column ms-1">
-                            <p class="m-0 p-0 text-warning">Username</p>
-                            <p class="m-0 p-0 text-dark">19:07</p>
-                        </div>
-                        <div class="ms-auto">
-                            <div class="d-flex flex-row">
-                                <h5 class="text-success me-2"><b>127</b></h5>
-                                <button class="btn btn-sm btn-success text-dark">+</button>
-                            </div>
-                        </div>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis inventore dolorum atque corporis pariatur harum quisquam cupiditate impedit.
-                    Fuga quia, hic accusamus autem ducimus temporibus impedit quae sed earum debitis!</p>
-                </div><hr>
-                <div class="d-flex flex-column ms-4"> <!--header of the post!-->
-                    <div class="d-flex flex-row">
-                        <img src="" alt="" style="width:50px; height:50px;">
-                        <div class="d-flex flex-column ms-1">
-                            <p class="m-0 p-0 text-warning">Username</p>
-                            <p class="m-0 p-0 text-dark">19:07</p>
-                        </div>
-                        <div class="ms-auto">
-                            <div class="d-flex flex-row">
-                                <h5 class="text-success me-2"><b>127</b></h5>
-                                <button class="btn btn-sm btn-success text-dark">+</button>
-                            </div>
-                        </div>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis inventore dolorum atque corporis pariatur harum quisquam cupiditate impedit.
-                    Fuga quia, hic accusamus autem ducimus temporibus impedit quae sed earum debitis!</p>
+                    <p>{{ post.text }}</p>
                 </div>
                 <hr>
 
-                <form> <!--Add comment!-->
-                    <div class="d-flex flex-column">
-                        <div class="form-group">
-                            <label for="inputComment">Dodaj komentarz</label>
-                            <textarea class="form-control bg-dark text-white color-white my-1" id="inputComment" rows=3></textarea>
+                {% for comment in comments %}
+                <div class="d-flex flex-column ms-4 my-1"> <!-- comment !-->
+                    <div class="d-flex flex-row">
+                        <img src="" alt="" style="width:50px; height:50px;">
+                        <div class="d-flex flex-column ms-1">
+                            <p class="m-0 p-0 text-warning">{{ comment.user.username }}</p>
+                            <p class="m-0 p-0 text-dark">{{ comment.createdAt|date("Y-m-d h:i") }}</p>
                         </div>
-                        <div class="d-flex justify-content-end">
-                            <button type="submit" class="btn btn-success">Dodaj</button>
+                        <div class="ms-auto">
+                            <div class="d-flex flex-row">
+                                <h5 class="text-success me-2"><b>{{ comment.score }}</b></h5>
+                                <button class="btn btn-sm btn-success text-dark">+</button>
+                            </div>
                         </div>
                     </div>
-                </form>
+                    <p>{{ comment.text }}</p>
+                </div><hr>
+                {% endfor %}
+
+                <div class="d-flex flex-column">
+                <h4>Dodaj komentarz</h4>
+                    <div class="form-group">
+                        {{ form_start(commentForm) }}
+                        {{ form_widget(commentForm) }}
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <button type="submit" class="btn btn-success">Dodaj</button>
+                    </div>
+                    {{ form_end(commentForm) }}
+                </div>
 
             </div>
         </div>

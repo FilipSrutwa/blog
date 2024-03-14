@@ -13,10 +13,12 @@
         <div class="col-6 ">
             <div class="p-3 bg-secondary text-white rounded-2">
                 <h5>Dodaj post</h1>
+                <div class="d-flex flex-column">
                 {{ form_start(form) }}
                 {{ form_widget(form) }}
                     <button class="btn btn-lg btn-dark align-self-end">Dodaj</button>
                 {{ form_end(form) }}
+                </div>
             </div>
             <hr>
 
@@ -27,7 +29,7 @@
                         <img src="" alt="" style="width:50px; height:50px;">
                         <div class="d-flex flex-column ms-1">
                             <p class="m-0 p-0 text-warning">{{ post.user.username }}</p>
-                            <p class="m-0 p-0 text-dark">{{ post.createdAt|date("h:i") }}</p>
+                            <p class="m-0 p-0 text-dark">{{ post.createdAt|date("Y-m-d h:i") }}</p>
                         </div>
                         <div class="ms-auto">
                             <div class="d-flex flex-row">
