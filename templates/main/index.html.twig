@@ -3,7 +3,7 @@
 {% block body %}
 <div class="container-fluid bg-dark min-vh-100">
 
-    <div class="row p-1 pt-3">
+    <div class="row p-1 pt-3"> <!-- News !-->
         <div class="col-2 bg-secondary rounded-2 text-white">
             <h2 class="text-center">Nowości</h2>
         </div>
@@ -11,7 +11,9 @@
         <div class="col-1"></div> <!--Empty spacing!-->
 
         <div class="col-6 ">
+
             <div class="p-3 bg-secondary text-white rounded-2">
+            {% if app.user %}
                 <h5>Dodaj post</h1>
                 <div class="d-flex flex-column">
                 {{ form_start(form) }}
@@ -19,63 +21,50 @@
                     <button class="btn btn-lg btn-dark align-self-end">Dodaj</button>
                 {{ form_end(form) }}
                 </div>
+            {% else %}
+                <p class="ps-2">Chcesz dodawać posty? <a href="/register" class="text-white">Zarejestruj się!</a></p>
+                <p class="ps-2">A może masz już konto? <a href="/register" class="text-white">Zaloguj się!</a></p>
+            {% endif %}
             </div>
             <hr>
-
             {% for post in posts %}
             <div class="bg-secondary text-white rounded-2 p-2 d-flex flex-column my-1"> <!--beggining of the post!-->
                 <div class="d-flex flex-column"> <!--header of the post!-->
                     <div class="d-flex flex-row">
                         <img src="" alt="" style="width:50px; height:50px;">
                         <div class="d-flex flex-column ms-1">
-                            <p class="m-0 p-0 text-warning">{{ post.user.username }}</p>
-                            <p class="m-0 p-0 text-dark">{{ post.createdAt|date("Y-m-d h:i") }}</p>
+                            <p class="m-0 p-0 text-warning">{{ post[0].user.username }}</p>
+                            <p class="m-0 p-0 text-dark">{{ post[0].createdAt|date("Y-m-d h:i") }}</p>
                         </div>
                         <div class="ms-auto">
                             <div class="d-flex flex-row">
-                                <h5 class="text-success me-2"><b>{{ post.score }}</b></h5>
+                                <h5 class="text-success me-2"><b>{{ post[0].score }}</b></h5>
                                 <button class="btn btn-sm btn-success text-dark">+</button>
                             </div>
                         </div>
                     </div>
-                    <p>{{ post.text }}</p>
+                    <p>{{ post[0].text }}</p>
                 </div>
                 <hr>
+                {% for comment in post[1] %}
                 <div class="d-flex flex-column ms-4"> <!--header of the comment!-->
                     <div class="d-flex flex-row">
                         <img src="" alt="" style="width:50px; height:50px;">
                         <div class="d-flex flex-column ms-1">
-                            <p class="m-0 p-0 text-warning">Username</p>
-                            <p class="m-0 p-0 text-dark">19:07</p>
+                            <p class="m-0 p-0 text-warning">{{ comment.user.username }}</p>
+                            <p class="m-0 p-0 text-dark">{{ comment.createdAt|date("Y-m-d h:i") }}</p>
                         </div>
                         <div class="ms-auto">
                             <div class="d-flex flex-row">
-                                <h5 class="text-success me-2"><b>127</b></h5>
+                                <h5 class="text-success me-2"><b>{{ comment.score }}</b></h5>
                                 <button class="btn btn-sm btn-success text-dark">+</button>
                             </div>
                         </div>
                     </div>
-                    <p>Comment lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis inventore dolorum atque corporis pariatur harum quisquam cupiditate impedit.
-                    Fuga quia, hic accusamus autem ducimus temporibus impedit quae sed earum debitis!</p>
+                    <p>{{ comment.text }}</p>
                 </div><hr>
-                <div class="d-flex flex-column ms-4"> <!--header of the comment!-->
-                    <div class="d-flex flex-row">
-                        <img src="" alt="" style="width:50px; height:50px;">
-                        <div class="d-flex flex-column ms-1">
-                            <p class="m-0 p-0 text-warning">Username</p>
-                            <p class="m-0 p-0 text-dark">19:07</p>
-                        </div>
-                        <div class="ms-auto">
-                            <div class="d-flex flex-row">
-                                <h5 class="text-success me-2"><b>127</b></h5>
-                                <button class="btn btn-sm btn-success text-dark">+</button>
-                            </div>
-                        </div>
-                    </div>
-                    <p>Comment lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis inventore dolorum atque corporis pariatur harum quisquam cupiditate impedit.
-                    Fuga quia, hic accusamus autem ducimus temporibus impedit quae sed earum debitis!</p>
-                </div>
-                <a href="/post/{{post.id}}" class="btn btn-outline-light align-self-center">Zobacz cały wątek</a>
+                {% endfor %}
+                <a href="/post/{{post[0].id}}" class="btn btn-outline-light align-self-center">Zobacz cały wątek</a>
             </div>
             {% endfor %}
         </div>

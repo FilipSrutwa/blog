@@ -57,18 +57,22 @@ input::placeholder{
                 </div><hr>
                 {% endfor %}
 
-                <div class="d-flex flex-column">
+                <div class="d-flex flex-column"><!-- Comments !-->
                 <h4>Dodaj komentarz</h4>
-                    <div class="form-group">
-                        {{ form_start(commentForm) }}
-                        {{ form_widget(commentForm) }}
-                    </div>
+
+                {% if app.user %}
+                    {{ form_start(commentForm) }}
+                    {{ form_widget(commentForm) }}
                     <div class="d-flex justify-content-end">
                         <button type="submit" class="btn btn-success">Dodaj</button>
                     </div>
                     {{ form_end(commentForm) }}
                 </div>
 
+                {% else %}
+                    <p class="ps-2">Chcesz dodawać komentarz? <a href="/register" class="text-white">Zarejestruj się!</a></p>
+                    <p class="ps-2">A może masz już konto? <a href="/register" class="text-white">Zaloguj się!</a></p>
+                {% endif %}
             </div>
         </div>
     </div>

@@ -3,17 +3,20 @@
 {% block title %}{% endblock %}
 
 {% block body %}
+    <div class="container pt-3 d-flex flex-column">
     <h1>Rejestracja</h1>
 
     {{ form_errors(registrationForm) }}
-
     {{ form_start(registrationForm) }}
+        <h5 class="my-1">Nazwa użytkownika</h5>
         {{ form_row(registrationForm.username) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
+        <h5 class="my-1">Hasło</h5>
+        {{ form_row(registrationForm.plainPassword) }}
+        <h5 class="my-1">Zgoda na utworzenie konta</h5>
         {{ form_row(registrationForm.agreeTerms) }}
 
-        <button type="submit" class="btn">Register</button>
+        <button type="submit" class="btn btn-lg btn-success">Zarejestruj</button>
     {{ form_end(registrationForm) }}
+    </div>
+    
 {% endblock %}

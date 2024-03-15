@@ -3,29 +3,35 @@
 {% block title %}Log in!{% endblock %}
 
 {% block body %}
-<form method="post">
-    {% if error %}
-        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
+<div class="container p-3">
+    <form method="post">
+        {% if error %}
+            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
 
-    {% if app.user %}
-        <div class="mb-3">
-            Jesteś zalogowany jako: {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+        {% if app.user %}
+            <div class="mb-3">
+                Jesteś zalogowany jako: {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Wyloguj</a>
+            </div>
+        {% endif %}
+
+        <h1>Podaj swoje dane</h1>
+
+        <div class="form-group my-2">
+            <label for="inputUsername">Nazwa użytkownika</label>
+            <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" autocomplete="username" required autofocus>
         </div>
-    {% endif %}
+        <div class="form-group my-2">
+            <label for="inputPassword">Hasło</label>
+            <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+        </div>
+        <input type="hidden" name="_csrf_token"
+            value="{{ csrf_token('authenticate') }}"
+        >
 
-    <h1 class="h3 mb-3 font-weight-normal">Podaj swoje dane</h1>
-    <label for="inputUsername">Nazwa użytkownika</label>
-    <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" autocomplete="username" required autofocus>
-    <label for="inputPassword">Hasło</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
-
-    <input type="hidden" name="_csrf_token"
-           value="{{ csrf_token('authenticate') }}"
-    >
-
-    <button class="btn btn-lg btn-primary" type="submit">
-        Zaloguj się
-    </button>
-</form>
+        <button class="btn btn-lg btn-primary" type="submit">
+            Zaloguj się
+        </button>
+    </form>
+</div>
 {% endblock %}

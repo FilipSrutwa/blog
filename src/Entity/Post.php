@@ -30,6 +30,7 @@ class Post
     private ?int $score = null;
 
     #[ORM\OneToMany(targetEntity: Comment::class, mappedBy: 'post', orphanRemoval: true)]
+    #[ORM\OrderBy(['score' => 'desc'])]
     private Collection $comments;
 
     public function __construct()
@@ -118,5 +119,11 @@ class Post
         }
 
         return $this;
+    }
+    public function getTwoComments(): array
+    {
+        $twoComments = $this->comments->toArray();
+        $twoComments = array_slice($twoComments, 0, 2);
+        return $twoComments;
     }
 }

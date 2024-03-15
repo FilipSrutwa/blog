@@ -31,13 +31,21 @@
                 </li>
                 </ul>
                 <ul class="navbar-nav ms-auto">
+                {% if not app.user %}
                     <li class="nav-item"> 
                         <a href="/register" class="nav-link">Zarejestruj się</a>
                     </li>
-                    <li class="nav-item">
-
-                        <a href="{{ app.user ?  "/logout" : "/login" }}" class="nav-link">{{ app.user ? "Wyloguj się" : "Zaloguj się" }}</a>
+                    <li class="nav-item"> 
+                        <a href="/login" class="nav-link">Zaloguj się</a>
                     </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a href="/account" class="nav-link">Zarządzaj kontem</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/logout" class="nav-link">Wyloguj się</a>
+                    </li>
+                {% endif %}
                 </ul>
             </div>
         </nav>

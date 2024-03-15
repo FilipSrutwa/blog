@@ -31,11 +31,22 @@ class MainController extends AbstractController
     #[Route('/', name: 'app_main')]
     public function index(Request $request): Response
     {
-        $post = new Post();
-        $form = $this->createForm(PostFormType::class, $post);
+        $postForm = new Post();
+        $form = $this->createForm(PostFormType::class, $postForm);
+
+        $posts = $this->postRepository->findBy(array(), ['createdAt' => 'DESC']);
+        $postsWithTwoComments = array();
+        $i = 0;
+
+        foreach ($posts as $post) {
+            $postsWithTwoComments[$i][0] = $post;
+            $postsWithTwoComments[$i][1] = $post->getTwoComments();
+            $i++;
+        }
+
         $data = [
-            'title' => 'Wypok - main',
-            'posts' => $this->postRepository->findAll(),
+            'title' => 'Wypok - strona główna',
+            'posts' => $postsWithTwoComments,
             'form' => $form->createView(),
         ];
 
@@ -60,12 +71,12 @@ class MainController extends AbstractController
     {
         $comment = new Comment();
         $commentForm = $this->createForm(CommentFormType::class, $comment);
-
+        $post = $this->postRepository->find(($postNumber));
         $data = [
-            'title' => 'Wypok - main',
-            'post' => $this->postRepository->find($postNumber),
+            'title' => 'Wypok',
+            'post' => $post,
             'commentForm' => $commentForm->createView(),
-            'comments' => $this->commentRepository->findBy(['post' => $this->postRepository->find($postNumber)]),
+            'comments' => $this->commentRepository->findBy(['post' => $post]),
         ];
 
         $commentForm->handleRequest($request);
@@ -73,7 +84,7 @@ class MainController extends AbstractController
             $newComment = $commentForm->getData();
             $newComment->setCreatedAt(new DateTimeImmutable());
             $newComment->setUser($this->getUser());
-            $newComment->setPost($this->postRepository->find($postNumber));
+            $newComment->setPost($post);
             $newComment->setScore(0);
 
             $this->em->persist($newComment);
