@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %} 
+
+{% block body %}
+<div class="container-fluid bg-dark min-vh-100">
+
+    <div class="row p-1 pt-3"> <!-- News !-->
+        <div class="col-2 bg-secondary rounded-2 text-white">
+            <h2 class="text-center min-vh-100 max-vh-100">Nowości</h2>
+        </div>
+
+        <div class="col-1"></div> <!--Empty spacing!-->
+
+        <div class="col-5 d-flex flex-column pt-3 align-items-center">            
+            <div class="card" style="width: 24rem;">
+                {% if app.user.imagePath %}
+                <img class="card-img-top" src="{{ asset('uploads/userImage/'.app.user.imagePath) }}">
+                {% else %}
+                <img class="card-img-top" src="{{ asset('uploads/userImage/defaultImage.png') }}">
+                {% endif %}
+                <div class="card-body d-flex flex-column align-items-center">
+                    <h4 class="card-title">{{ app.user.username }}</h4>
+                    <p class="card-text">
+                    {% if app.user.description %}
+                    {{ app.user.description }}
+                    {% else %}
+                    Nie masz jeszcze opisu. Dodaj coś ciekawego o sobie!
+                    {% endif %}
+                    </p>
+                    <a href="/editUser/{{ app.user.id }}" class="btn btn-success">Edytuj profil</a>
+                </div>
+            </div>
+        </div>
+            <div class="col-4 bg-white rounded-2 min-vh-100">
+                <h1 class="text-center">Posty w których brałeś udział</h1>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

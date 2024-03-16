@@ -13,7 +13,6 @@ use App\Entity\Comment;
 use App\Form\CommentFormType;
 use App\Form\PostFormType;
 use DateTimeImmutable;
-use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 
 class MainController extends AbstractController

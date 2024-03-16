@@ -41,6 +41,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(targetEntity: Comment::class, mappedBy: 'user', orphanRemoval: true)]
     private Collection $comments;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $ImagePath = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $description = null;
+
     public function __construct()
     {
         $this->posts = new ArrayCollection();
@@ -178,6 +184,30 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $comment->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getImagePath(): ?string
+    {
+        return $this->ImagePath;
+    }
+
+    public function setImagePath(?string $ImagePath): static
+    {
+        $this->ImagePath = $ImagePath;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): static
+    {
+        $this->description = $description;
 
         return $this;
     }

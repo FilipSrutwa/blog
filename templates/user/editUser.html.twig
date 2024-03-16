@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %} 
+
+{% block body %}
+<div class="container-fluid bg-dark min-vh-100">
+
+    <div class="row p-1 pt-3"> <!-- News !-->
+        <div class="col-2 bg-secondary rounded-2 text-white">
+            <h2 class="text-center min-vh-100 max-vh-100">Nowości</h2>
+        </div>
+
+        <div class="col-1"></div> <!--Empty spacing!-->
+
+        <div class="col-6 d-flex flex-column pt-3 align-items-center">            
+            <div class="card" style="width: 24rem;">
+                {% if app.user.imagePath %}
+                <img class="card-img-top" src="{{ asset('uploads/userImage/'.app.user.imagePath) }}">
+                {% else %}
+                <img class="card-img-top" src="{{ asset('uploads/userImage/defaultImage.png') }}">
+                {% endif %}
+                <div class="card-body d-flex flex-column align-items-center">
+                    {{ form_start(userForm) }}
+                    {{ form_widget(userForm) }}
+                    <button class="btn btn-lg btn-dark align-self-end">Zatwierdź zmiany</button>
+                    {{ form_end(userForm) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
