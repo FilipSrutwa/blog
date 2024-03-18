@@ -31,7 +31,11 @@
             <div class="bg-secondary text-white rounded-2 p-2 d-flex flex-column my-1"> <!--beggining of the post!-->
                 <div class="d-flex flex-column"> <!--header of the post!-->
                     <div class="d-flex flex-row">
-                        <img src="" alt="" style="width:50px; height:50px;">
+                        {% if post[0].user.imagePath %}
+                            <img src="{{ asset(post[0].user.imagePath) }}" alt="" style="width:50px; height:50px;">
+                        {% else %}
+                            <img src="{{ asset('uploads/userImage/defaultImage.png') }}" alt="" style="width:50px; height:50px;">
+                        {% endif %}
                         <div class="d-flex flex-column ms-1">
                             <p class="m-0 p-0 text-warning">{{ post[0].user.username }}</p>
                             <p class="m-0 p-0 text-dark">{{ post[0].createdAt|date("Y-m-d h:i") }}</p>
@@ -49,7 +53,11 @@
                 {% for comment in post[1] %}
                 <div class="d-flex flex-column ms-4"> <!--header of the comment!-->
                     <div class="d-flex flex-row">
-                        <img src="" alt="" style="width:50px; height:50px;">
+                        {% if comment.user.imagePath %}
+                            <img src="{{ asset(comment.user.imagePath) }}" alt="" style="width:50px; height:50px;">
+                        {% else %}
+                            <img src="{{ asset('uploads/userImage/defaultImage.png') }}" alt="" style="width:50px; height:50px;">
+                        {% endif %}
                         <div class="d-flex flex-column ms-1">
                             <p class="m-0 p-0 text-warning">{{ comment.user.username }}</p>
                             <p class="m-0 p-0 text-dark">{{ comment.createdAt|date("Y-m-d h:i") }}</p>

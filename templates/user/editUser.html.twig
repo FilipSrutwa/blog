@@ -13,7 +13,7 @@
         <div class="col-6 d-flex flex-column pt-3 align-items-center">            
             <div class="card" style="width: 24rem;">
                 {% if app.user.imagePath %}
-                <img class="card-img-top" src="{{ asset('uploads/userImage/'.app.user.imagePath) }}">
+                <img class="card-img-top" src="{{ asset(app.user.imagePath) }}">
                 {% else %}
                 <img class="card-img-top" src="{{ asset('uploads/userImage/defaultImage.png') }}">
                 {% endif %}

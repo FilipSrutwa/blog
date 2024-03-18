@@ -13,7 +13,7 @@
         <div class="col-5 d-flex flex-column pt-3 align-items-center">            
             <div class="card" style="width: 24rem;">
                 {% if app.user.imagePath %}
-                <img class="card-img-top" src="{{ asset('uploads/userImage/'.app.user.imagePath) }}">
+                <img class="card-img-top" src="{{ asset(app.user.imagePath) }}">
                 {% else %}
                 <img class="card-img-top" src="{{ asset('uploads/userImage/defaultImage.png') }}">
                 {% endif %}
@@ -30,8 +30,22 @@
                 </div>
             </div>
         </div>
-            <div class="col-4 bg-white rounded-2 min-vh-100">
+            <div class="col-4 bg-secondary rounded-2 min-vh-100">
                 <h1 class="text-center">Posty w których brałeś udział</h1>
+                {% for post in posts %}
+                <hr>
+                <div class="d-flex flex-column"> <!--header of the post!-->
+                    <div class="d-flex flex-row">
+                        <img src="" alt="" style="width:50px; height:50px;">
+                        <div class="d-flex flex-column ms-1">
+                            <p class="m-0 p-0 text-warning">{{ post.user.username }}</p>
+                            <p class="m-0 p-0 text-dark">{{ post.createdAt|date("Y-m-d h:i") }}</p>
+                        </div>
+                    </div>
+                    <p>{{ post.text }}</p>
+                    <div><a href="/post/{{ post.id }}" class="btn btn-lg btn-outline-light">Przejdź do wpisu</a></div>
+                </div>
+                {% endfor %}
             </div>
         </div>
     </div>

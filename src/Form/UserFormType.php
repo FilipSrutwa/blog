@@ -29,6 +29,7 @@ class UserFormType extends AbstractType
                     'class' => 'form-control-file my-1',
                 ),
                 'label' => 'Zdjęcie profilowe',
+                'data_class' => null,
                 'required' => false,
             ])
             ->add('description', TextareaType::class, [
